@@ -23,11 +23,11 @@ class Suv {
       'Honda BR-V',
       'assets/HondaBrv.png',
       '\nFuel Consumption (L/100km):'
-          '\n6.4'
-          '\n\nCapacity:'
-          '\n7 seaters'
-          '\n\nMaximum Speed:'
-          '\n160km/h',
+          '6.4'
+          '\nCapacity:'
+          '7 seaters'
+          '\nMaximum Speed:'
+          '160km/h\n',
       1,
       [
         RentDays('\nTotal price for day(s):', 'RM', 230),
@@ -37,14 +37,14 @@ class Suv {
       'Proton X50',
       'assets/ProtonX50.png',
       '\nFuel Consumption (L/100km):'
-          '\n6.5'
-          '\n\nCapacity:'
-          '\n7 seaters'
-          '\n\nMaximum Speed:'
-          '\n195km/h',
+          '6.5'
+          '\nCapacity:'
+          '7 seaters'
+          '\nMaximum Speed:'
+          '195km/h\n',
       1,
       [
-        RentDays('Total price for day(s):', 'RM', 200),
+        RentDays('\nTotal price for day(s):', 'RM', 200),
       ],
     ),
   ];

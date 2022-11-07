@@ -4,7 +4,7 @@ By: Muhammad Aiman Danial
 */
 import 'package:flutter/material.dart';
 import 'firstpage.dart';
-// import 'package:car_rental/nav.dart';
+import 'package:car_rental/nav.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -34,13 +34,13 @@ class HomePage extends StatelessWidget {
                       padding: const EdgeInsets.all(20),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
-                  child: const Text("Book Now"),
+                  child: const Text("Welcome, book now!"),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const FirstPage()),
-                      // builder: (context) => const Nav()),
+                          // builder: (context) => const FirstPage()),
+                          builder: (context) => const Nav()),
                     );
                   },
                 ),

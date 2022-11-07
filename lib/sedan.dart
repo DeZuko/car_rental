@@ -22,29 +22,29 @@ class Sedan {
     Sedan(
       'Honda City',
       'assets/HondaCity.png',
-      '\nFuel Consumption (L/100km):'
-          '\n5.4'
-          '\n\nCapacity:'
-          '\n5 seaters'
-          '\n\nMaximum Speed:'
-          '\n195km/h',
+      '\nFuel Consumption (L/100km): '
+          '5.4'
+          '\nCapacity: '
+          '5 seaters'
+          '\nMaximum Speed: '
+          '195km/h\n',
       1,
       [
-        RentDays('\nTotal price for day(s):', 'RM', 95),
+        RentDays('\nTotal price for day(s) : ', 'RM', 95),
       ],
     ),
     Sedan(
       'Nissan Almera',
       'assets/NissanAlmera.png',
-      '\nFuel Consumption (L/100km):'
-          '\n5.4'
-          '\n\nCapacity:'
-          '\n5 seaters'
-          '\n\nMaximum Speed:'
-          '\n196km/h',
+      '\nFuel Consumption (L/100km): '
+          '5.4'
+          '\nCapacity: '
+          '5 seaters'
+          '\nMaximum Speed: '
+          '196km/h\n',
       1,
       [
-        RentDays('Total price for day(s):', 'RM', 110),
+        RentDays('\nTotal price for day(s): ', 'RM', 110),
       ],
     ),
   ];

@@ -39,33 +39,60 @@ class _SedanDetailState extends State<SedanDetail> {
               height: 4,
             ),
 
-            // Display the car model
+            // Display car model
             Text(
               widget.sedan.model,
               style: const TextStyle(fontSize: 20),
             ),
 
-            // Display the car detail
-            Center(
-              child: Text(
-                widget.sedan.about,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 16),
+            // Display car detail
+            Text(
+              widget.sedan.about,
+              textAlign: TextAlign.left,
+              style: const TextStyle(fontSize: 16),
+            ),
+
+            const SizedBox(
+              height: 4,
+            ),
+
+            // Input discount code
+            SizedBox(
+              width: 200,
+              child: TextFormField(
+                decoration: const InputDecoration(
+                    hintText: 'Enter discount code',
+                    border: OutlineInputBorder(),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 27.0),
+                    labelText: 'Enter discount code'),
+                onSaved: (val) {
+                  if (val == 'coupon') {
+                    return null;
+                  }
+                },
+                // validator: (val) {
+                //   print('validating');
+                // },
               ),
+            ),
+
+            const SizedBox(
+              height: 6,
             ),
 
             // Track & display the price changes total
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(15.0),
                 itemCount: widget.sedan.subtotal.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final detail1 = widget.sedan.subtotal[index];
+                  final subtotal = widget.sedan.subtotal[index];
                   return Text(
                       textAlign: TextAlign.center,
-                      '${detail1.price} '
-                      '${detail1.rm} '
-                      '${detail1.day * _sliderVal}',
+                      '${subtotal.price} '
+                      '${subtotal.rm} '
+                      '${subtotal.day * _sliderVal}',
                       style: const TextStyle(fontSize: 16));
                 },
               ),

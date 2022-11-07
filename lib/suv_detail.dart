@@ -42,47 +42,61 @@ class _SuvDetailState extends State<SuvDetail> {
             // Display car model
             Text(
               widget.suv.label,
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 20),
             ),
 
-            // Display car detail
-            Center(
-              child: Text(
-                widget.suv.about,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 16),
+            // Display car details
+            Text(
+              widget.suv.about,
+              textAlign: TextAlign.left,
+              style: const TextStyle(fontSize: 16),
+            ),
+
+            const SizedBox(
+              height: 4,
+            ),
+
+            // Input discount code
+            SizedBox(
+              width: 200,
+              child: TextFormField(
+                decoration: const InputDecoration(
+                    hintText: 'Enter discount code',
+                    border: OutlineInputBorder(),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 27.0),
+                    labelText: 'Enter discount code'),
+                onSaved: (val) {
+                  if (val == 'coupon') {
+                    return null;
+                  }
+                },
+                // validator: (val) {
+                //   print('validating');
+                // },
               ),
+            ),
+
+            const SizedBox(
+              height: 6,
             ),
 
             // Track and display price changes total
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(15.0),
                 itemCount: widget.suv.subtotal.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final detail1 = widget.suv.subtotal[index];
+                  final subtotal = widget.suv.subtotal[index];
                   return Text(
-                      '${detail1.price} '
-                      '${detail1.rm} '
-                      '${detail1.day * _sliderVal}',
+                      textAlign: TextAlign.center,
+                      '${subtotal.price} '
+                      '${subtotal.rm} '
+                      '${subtotal.day * _sliderVal}',
                       style: const TextStyle(fontSize: 16));
                 },
               ),
             ),
-
-            // TextFormField(
-            //     decoration: const InputDecoration(
-            //       icon:  Icon(Icons.price_check_outlined),
-            //       hintText: '',
-            //       border: UnderlineInputBorder(),
-            //       labelText: 'Enter discount code'),
-            //         onSaved: (val) {
-            //         print('saved');
-            //       },
-            //       validator: (val) {
-            //       print('validating');
-            //     },
-            //   ),
 
             // Create slider
             Slider(
@@ -100,6 +114,7 @@ class _SuvDetailState extends State<SuvDetail> {
               inactiveColor: Colors.black,
             ),
 
+            // Create container for submit button
             Container(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(

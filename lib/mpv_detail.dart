@@ -19,7 +19,7 @@ class MpvDetail extends StatefulWidget {
 class _MpvDetailState extends State<MpvDetail> {
   int _sliderVal = 1;
   // Temp
-  double discount = 0.5;
+  double discount = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -39,52 +39,64 @@ class _MpvDetailState extends State<MpvDetail> {
               child: Image(image: AssetImage(widget.mpv.imageUrl)),
             ),
             const SizedBox(
-              height: 2,
+              height: 4,
             ),
+
             // Display car model
             Text(
               widget.mpv.label,
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 20),
             ),
+
             // Display car details
-            Center(
-              child: Text(
-                widget.mpv.about,
-                textAlign: TextAlign.left,
-                style: const TextStyle(fontSize: 16),
-              ),
+            Text(
+              widget.mpv.about,
+              textAlign: TextAlign.left,
+              style: const TextStyle(fontSize: 16),
+            ),
+
+            const SizedBox(
+              height: 4,
             ),
 
             // Input discount code
-            TextFormField(
-              decoration: const InputDecoration(
-                  icon: Icon(Icons.price_check_outlined),
-                  hintText: '',
-                  border: UnderlineInputBorder(),
-                  labelText: 'Enter discount code'),
-              onSaved: (val) {
-                if (val == 'coupon') {
-                  return null;
-                }
-              },
-              // validator: (val) {
-              //   print('validating');
-              // },
+            SizedBox(
+              width: 200,
+              child: TextFormField(
+                decoration: const InputDecoration(
+                    hintText: 'Enter discount code',
+                    border: OutlineInputBorder(),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 27.0),
+                    labelText: 'Enter discount code'),
+                onChanged: (val) {
+                  if (val == 'coupon') {
+                    discount = 0.5;
+                  }
+                },
+                // validator: (val) {
+                //   print('validating');
+                // },
+              ),
+            ),
+
+            const SizedBox(
+              height: 6,
             ),
 
             // Track the price changes with slider
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(30.0),
-                itemCount: widget.mpv.detail1.length,
+                padding: const EdgeInsets.all(15.0),
+                itemCount: widget.mpv.subtotal.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final detail1 = widget.mpv.detail1[index];
+                  final subtotal = widget.mpv.subtotal[index];
                   return Text(
                       textAlign: TextAlign.center,
-                      '${detail1.price}'
-                      '${detail1.rm}'
-                      '${detail1.day * _sliderVal}',
-                      // '${detail1.day * _sliderVal * discount}',
+                      '${subtotal.price}'
+                      '${subtotal.rm}'
+                      // '${subtotal.day * _sliderVal}',
+                      '${subtotal.day * _sliderVal * discount}',
                       style: const TextStyle(fontSize: 16));
                 },
               ),
@@ -106,6 +118,7 @@ class _MpvDetailState extends State<MpvDetail> {
               inactiveColor: Colors.black,
             ),
 
+            // Create container for submit button
             Container(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(
