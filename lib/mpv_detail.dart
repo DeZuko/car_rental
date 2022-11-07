@@ -13,10 +13,13 @@ class MpvDetail extends StatefulWidget {
 
 class _MpvDetailState extends State<MpvDetail> {
   int _sliderVal = 1;
+  // Temp
+  double discount = 0.5;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(widget.mpv.label),
       ),
@@ -24,59 +27,70 @@ class _MpvDetailState extends State<MpvDetail> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
+            // Display car image
             SizedBox(
               height: 300,
               width: double.infinity,
               child: Image(image: AssetImage(widget.mpv.imageUrl)),
             ),
             const SizedBox(
-              height: 4,
+              height: 2,
             ),
+            // Display car model
             Text(
               widget.mpv.label,
               style: const TextStyle(fontSize: 18),
             ),
-            Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  widget.mpv.about,
-                  style: const TextStyle(fontSize: 16),
-                )),
+            // Display car details
+            Center(
+              child: Text(
+                widget.mpv.about,
+                textAlign: TextAlign.left,
+                style: const TextStyle(fontSize: 16),
+              ),
+            ),
+
+            // Input discount code
+            TextFormField(
+              decoration: const InputDecoration(
+                  icon: Icon(Icons.price_check_outlined),
+                  hintText: '',
+                  border: UnderlineInputBorder(),
+                  labelText: 'Enter discount code'),
+              onSaved: (val) {
+                if (val == 'coupon') {
+                  return null;
+                }
+              },
+              // validator: (val) {
+              //   print('validating');
+              // },
+            ),
+
+            // Track the price changes with slider
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(30.0),
                 itemCount: widget.mpv.detail1.length,
                 itemBuilder: (BuildContext context, int index) {
                   final detail1 = widget.mpv.detail1[index];
                   return Text(
+                      textAlign: TextAlign.center,
                       '${detail1.price} '
                       '${detail1.rm} '
-                      '${detail1.hour * _sliderVal}',
+                      '${detail1.day * _sliderVal}',
+                      // '${detail1.day * _sliderVal * discount}',
                       style: const TextStyle(fontSize: 16));
                 },
               ),
             ),
 
-            // TextFormField(
-            //     decoration: const InputDecoration(
-            //       icon:  Icon(Icons.price_check_outlined),
-            //       hintText: '',
-            //       border: UnderlineInputBorder(),
-            //       labelText: 'Enter discount code'),
-            //         onSaved: (val) {
-            //         print('saved');
-            //       },
-            //       validator: (val) {
-            //       print('validating');
-            //     },
-
-            //   ),
-
+            // Create slider
             Slider(
               min: 1,
-              max: 48,
-              divisions: 48,
-              label: '${_sliderVal * widget.mpv.hour} hours',
+              max: 30,
+              divisions: 30,
+              label: '${_sliderVal * widget.mpv.day} days',
               value: _sliderVal.toDouble(),
               onChanged: (newValue) {
                 setState(() {

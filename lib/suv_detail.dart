@@ -24,6 +24,7 @@ class _SuvDetailState extends State<SuvDetail> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
+            // Create sizebox to display image
             SizedBox(
               height: 300,
               width: double.infinity,
@@ -32,10 +33,14 @@ class _SuvDetailState extends State<SuvDetail> {
             const SizedBox(
               height: 4,
             ),
+
+            // Display car model
             Text(
               widget.suv.label,
               style: const TextStyle(fontSize: 18),
             ),
+
+            // Display car detail
             Center(
               child: Text(
                 widget.suv.about,
@@ -43,6 +48,8 @@ class _SuvDetailState extends State<SuvDetail> {
                 style: const TextStyle(fontSize: 16),
               ),
             ),
+
+            // Track and display price changes total
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(30.0),
@@ -70,13 +77,13 @@ class _SuvDetailState extends State<SuvDetail> {
             //       validator: (val) {
             //       print('validating');
             //     },
-
             //   ),
 
+            // Create slider
             Slider(
               min: 1,
-              max: 48,
-              divisions: 48,
+              max: 30,
+              divisions: 30,
               label: '${_sliderVal * widget.suv.day} days',
               value: _sliderVal.toDouble(),
               onChanged: (newValue) {

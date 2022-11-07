@@ -66,6 +66,20 @@ class _SedanDetailState extends State<SedanDetail> {
               ),
             ),
 
+            // TextFormField(
+            //     decoration: const InputDecoration(
+            //       icon:  Icon(Icons.price_check_outlined),
+            //       hintText: '',
+            //       border: UnderlineInputBorder(),
+            //       labelText: 'Enter discount code'),
+            //         onSaved: (val) {
+            //         print('saved');
+            //       },
+            //       validator: (val) {
+            //       print('validating');
+            //     },
+            //   ),
+
             // Create slider
             Slider(
               min: 1,

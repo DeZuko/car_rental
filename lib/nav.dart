@@ -1,3 +1,4 @@
+// By: Ariffin
 import 'package:flutter/material.dart';
 import 'card1.dart';
 import 'card2.dart';
@@ -33,7 +34,7 @@ class _NavState extends State<Nav> {
       appBar: AppBar(
         title: const Text('Cars Catalog',
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
             )),
       ),
       body: pages[_selectedIndex],
@@ -43,9 +44,11 @@ class _NavState extends State<Nav> {
         onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.pets_rounded), label: 'Sedan'),
-          BottomNavigationBarItem(icon: Icon(Icons.pets_rounded), label: 'SUV'),
-          BottomNavigationBarItem(icon: Icon(Icons.pets_rounded), label: 'MPV'),
+              icon: Icon(Icons.drive_eta_rounded), label: 'Sedan'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.drive_eta_rounded), label: 'SUV'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.drive_eta_rounded), label: 'MPV'),
         ],
       ),
     );

@@ -1,6 +1,7 @@
-// import 'package:car_rental/nav.dart';
-// import 'package:car_rental/userform.dart';
+// ignore_for_file: unused_import
+// By: Muhammad Aiman Danial
 import 'package:flutter/material.dart';
+import 'package:car_rental/nav.dart';
 import 'firstpage.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,7 +38,7 @@ class HomePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           // builder: (context) => const FirstPage()),
-                          builder: (context) => const FirstPage()),
+                          builder: (context) => const Nav()),
                     );
                   },
                 ),
