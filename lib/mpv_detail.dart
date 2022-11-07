@@ -76,8 +76,8 @@ class _MpvDetailState extends State<MpvDetail> {
                   final detail1 = widget.mpv.detail1[index];
                   return Text(
                       textAlign: TextAlign.center,
-                      '${detail1.price} '
-                      '${detail1.rm} '
+                      '${detail1.price}'
+                      '${detail1.rm}'
                       '${detail1.day * _sliderVal}',
                       // '${detail1.day * _sliderVal * discount}',
                       style: const TextStyle(fontSize: 16));
