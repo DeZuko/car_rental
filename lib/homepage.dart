@@ -1,0 +1,49 @@
+// import 'package:car_rental/nav.dart';
+// import 'package:car_rental/userform.dart';
+import 'package:flutter/material.dart';
+import 'firstpage.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: const Text("3Bros Car Rental"),
+          centerTitle: true,
+        ),
+        body: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/home.jpg'),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                margin: const EdgeInsets.only(top: 550),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(20),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  child: const Text("Book Now"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          // builder: (context) => const FirstPage()),
+                          builder: (context) => const FirstPage()),
+                    );
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+}
