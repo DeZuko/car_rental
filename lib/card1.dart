@@ -1,4 +1,8 @@
-// By: Ariffin
+/* 
+#6.1
+Page 3
+By: Ariffin 
+*/
 import 'package:car_rental/sedan_detail.dart';
 import 'package:flutter/material.dart';
 import 'sedan.dart';

@@ -1,4 +1,8 @@
-// By: Ariffin
+/* 
+#6.2
+Page 3
+By: Ariffin 
+*/
 import 'package:car_rental/suv_detail.dart';
 import 'package:flutter/material.dart';
 import 'suv.dart';

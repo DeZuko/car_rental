@@ -1,8 +1,10 @@
-// ignore_for_file: unused_import
-// By: Muhammad Aiman Danial
+/* 
+#2
+By: Muhammad Aiman Danial 
+*/
 import 'package:flutter/material.dart';
-import 'package:car_rental/nav.dart';
 import 'firstpage.dart';
+// import 'package:car_rental/nav.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

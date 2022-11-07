@@ -1,3 +1,8 @@
+/* 
+#8.1
+Page 3
+By: Ariffin & Haneef
+*/
 import 'package:flutter/material.dart';
 import 'sedan.dart';
 import 'homepage.dart';

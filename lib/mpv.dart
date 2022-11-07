@@ -1,3 +1,8 @@
+/* 
+#7.2
+Page 3
+By: Ariffin & Haneef
+*/
 class RentDays {
   String price;
   String rm;
