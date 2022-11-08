@@ -27,7 +27,7 @@ class Suv {
           '\nCapacity:'
           '7 seaters'
           '\nMaximum Speed:'
-          '160km/h\n',
+          '160km/h',
       1,
       [
         RentDays('\nTotal price for day(s):', 'RM', 230),
@@ -41,7 +41,7 @@ class Suv {
           '\nCapacity:'
           '7 seaters'
           '\nMaximum Speed:'
-          '195km/h\n',
+          '195km/h',
       1,
       [
         RentDays('\nTotal price for day(s):', 'RM', 200),

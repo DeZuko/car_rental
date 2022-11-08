@@ -13,10 +13,10 @@ class RentDays {
 class Mpv {
   int day;
   List<RentDays> subtotal;
-  String label;
+  String model;
   String imageUrl;
   String about;
-  Mpv(this.label, this.imageUrl, this.about, this.day, this.subtotal);
+  Mpv(this.model, this.imageUrl, this.about, this.day, this.subtotal);
 
   static List<Mpv> samples = [
     Mpv(
@@ -27,7 +27,7 @@ class Mpv {
           '\nCapacity: '
           '6-7 seaters'
           '\nMaximum Speed: '
-          '195km/h\n',
+          '195km/h',
       1,
       [
         RentDays('\nTotal price for day(s):', 'RM', 300),
@@ -41,10 +41,10 @@ class Mpv {
           '\nCapacity: '
           '8 seaters'
           '\nMaximum Speed: '
-          '190km/h\n',
+          '190km/h',
       1,
       [
-        RentDays('Total price for day(s):', 'RM', 350),
+        RentDays('\nTotal price for day(s):', 'RM', 350),
       ],
     ),
   ];

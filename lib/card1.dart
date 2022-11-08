@@ -18,10 +18,12 @@ class Card1 extends StatelessWidget {
           itemCount: Sedan.samples.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
+              // Route to sedan.dart
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
+                    // Return page based on index list
                     builder: (context) {
                       return SedanDetail(sedan: Sedan.samples[index]);
                     },

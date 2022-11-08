@@ -50,7 +50,7 @@ Widget buildDetail(Mpv mpv) {
             height: 14.0,
           ),
           Text(
-            mpv.label,
+            mpv.model,
             style: const TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.w700,

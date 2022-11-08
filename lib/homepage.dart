@@ -4,7 +4,7 @@ By: Muhammad Aiman Danial
 */
 import 'package:flutter/material.dart';
 import 'firstpage.dart';
-import 'package:car_rental/nav.dart';
+// import 'package:car_rental/nav.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
         ),
         body: Stack(
           children: [
+            // Background image
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -25,6 +26,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+
+            // Button
             Align(
               alignment: Alignment.center,
               child: Container(
@@ -36,11 +39,12 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50))),
                   child: const Text("Welcome, book now!"),
                   onPressed: () {
+                    // Route to first page (Customer Form)
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          // builder: (context) => const FirstPage()),
-                          builder: (context) => const Nav()),
+                          builder: (context) => const FirstPage()),
+                      // builder: (context) => const Nav()),
                     );
                   },
                 ),

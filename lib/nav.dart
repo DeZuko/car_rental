@@ -19,6 +19,7 @@ class Nav extends StatefulWidget {
 }
 
 class _NavState extends State<Nav> {
+  // Declare variable and list
   int _selectedIndex = 0;
   static List<Widget> pages = <Widget>[
     const Card1(),
@@ -26,6 +27,7 @@ class _NavState extends State<Nav> {
     const Card3(),
   ];
 
+  // Initialize list index to ontap function
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -41,11 +43,13 @@ class _NavState extends State<Nav> {
               color: Colors.white,
             )),
       ),
+      // Display page according to index list
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+        // Customize bottom bar
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.drive_eta_rounded), label: 'Sedan'),

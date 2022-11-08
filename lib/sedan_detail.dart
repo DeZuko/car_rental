@@ -17,15 +17,23 @@ class SedanDetail extends StatefulWidget {
 }
 
 class _SedanDetailState extends State<SedanDetail> {
+  // Declare & initialize slider value
   int _sliderVal = 1;
+  // Create global key for coupon form
+  final _couponKey = GlobalKey<FormState>();
+  // Declare & initialize discount value
+  // (before coupon applied)
+  double discount = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Avoid overflow size
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(widget.sedan.model),
       ),
-      backgroundColor: Colors.brown[200],
+      backgroundColor: Colors.brown[100],
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -57,66 +65,101 @@ class _SedanDetailState extends State<SedanDetail> {
             ),
 
             // Input discount code
-            SizedBox(
-              width: 200,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                    hintText: 'Enter discount code',
-                    border: OutlineInputBorder(),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 27.0),
-                    labelText: 'Enter discount code'),
-                onSaved: (val) {
-                  if (val == 'coupon') {
-                    return null;
-                  }
-                },
-                // validator: (val) {
-                //   print('validating');
-                // },
-              ),
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 180,
+                  // Coupon text form field
+                  child: Form(
+                    // Assign couponkey key global variable to key?
+                    key: _couponKey,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          hintText: 'Enter discount code',
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 27.0),
+                          labelStyle: TextStyle(fontSize: 13.0),
+                          labelText: 'Enter discount code'),
+                      // The coupon code: MY50
+                      validator: (value) {
+                        // If coupon invalid
+                        if (!(value == "MY50")) {
+                          discount = 1;
+                          return 'Invalid input';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
 
-            const SizedBox(
-              height: 6,
+                // Apply button for coupon
+                SizedBox(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.brown[300],
+                        shadowColor: Colors.brown,
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32.0)),
+                        minimumSize: const Size(100, 40), //////// HERE
+                      ),
+                      child: const Text("Apply"),
+                      // Validation based on couponkey earlier
+                      onPressed: () {
+                        if (_couponKey.currentState!.validate()) {
+                          discount = 0.5;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            // return message banner in same page
+                            const SnackBar(
+                              content: Text('Coupon applied'),
+                              duration: Duration(seconds: 1, milliseconds: 500),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
 
             // Track & display the price changes total
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(10.0),
                 itemCount: widget.sedan.subtotal.length,
                 itemBuilder: (BuildContext context, int index) {
                   final subtotal = widget.sedan.subtotal[index];
+                  // Display the subtotal value
                   return Text(
                       textAlign: TextAlign.center,
-                      '${subtotal.price} '
-                      '${subtotal.rm} '
-                      '${subtotal.day * _sliderVal}',
+                      '${subtotal.price}'
+                      '${subtotal.rm}'
+                      // '${subtotal.day * _sliderVal}',
+
+                      // Arithmetic along with discount
+                      // No discount means discount = 1
+                      '${subtotal.day * _sliderVal * discount}',
                       style: const TextStyle(fontSize: 16));
                 },
               ),
             ),
-
-            // TextFormField(
-            //     decoration: const InputDecoration(
-            //       icon:  Icon(Icons.price_check_outlined),
-            //       hintText: '',
-            //       border: UnderlineInputBorder(),
-            //       labelText: 'Enter discount code'),
-            //         onSaved: (val) {
-            //         print('saved');
-            //       },
-            //       validator: (val) {
-            //       print('validating');
-            //     },
-            //   ),
 
             // Create slider
             Slider(
               min: 1,
               max: 30,
               divisions: 30,
+              // Set label value
               label: '${_sliderVal * widget.sedan.day} days',
               value: _sliderVal.toDouble(),
               onChanged: (newValue) {
@@ -133,11 +176,13 @@ class _SedanDetailState extends State<SedanDetail> {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(
                 child: const Text('Submit'),
+                // Route to Homepages
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const HomePage()),
                   );
+                  // Display message banner in homepage
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Thank you for booking !'),

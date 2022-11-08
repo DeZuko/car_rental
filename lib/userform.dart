@@ -36,6 +36,7 @@ class UserFormState extends State<UserForm> {
       child: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          // Invoke all the textformfield methods
           buildName(),
           const SizedBox(height: 15),
           buildAddress(),
@@ -341,6 +342,7 @@ class UserFormState extends State<UserForm> {
 
   Widget buildSubmit() => Container(
         padding: const EdgeInsets.symmetric(vertical: 20),
+        // Submit button
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             foregroundColor: Colors.white,
@@ -349,17 +351,19 @@ class UserFormState extends State<UserForm> {
             elevation: 3,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(32.0)),
-            minimumSize: const Size(100, 40), //////// HERE
+            minimumSize: const Size(100, 40),
           ),
           child: const Text("Submit"),
           onPressed: () {
             if (_formKey.currentState!.validate()) {
+              // Show message banner in next pages
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Successful, please wait..'),
                   duration: Duration(seconds: 1, milliseconds: 500),
                 ),
               );
+              // Route to Nav()
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Nav()),
